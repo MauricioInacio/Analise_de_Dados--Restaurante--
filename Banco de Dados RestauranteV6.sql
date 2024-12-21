@@ -1,13 +1,13 @@
 use restaurante;
 
 select pro.id_produto, pro.nome, pro.descricao, info.ingredientes 
-from produtos as pro inner join info_produtos as info;
+from produtos as pro left join info_produtos as info on pro.id_produto = info.id_produto;
     
 select ped.id_pedido, ped.quantidade, ped.data_pedido, c.nome, c.email 
-from pedidos as ped inner join clientes as c;
+from pedidos as ped left join clientes as c on ped.id_cliente = c.id_cliente;
 
-select ped.id_pedido, ped.quantidade, ped.data_pedido, c.nome, c.email, f.nome 
-from pedidos as ped inner join clientes as c inner join funcionario as f;
+select ped.id_pedido, ped.quantidade, ped.data_pedido, c.nome, c.email, c.nome 
+from pedidos as ped left join clientes as c on ped.id_cliente = c.id_cliente;
 
 select ped.id_pedido, ped.quantidade, ped.data_pedido, c.nome, c.email, f.nome, pro.nome, pro.preco 
 from pedidos as ped inner join clientes as c inner join funcionario as f inner join produtos as pro;
